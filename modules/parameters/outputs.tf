@@ -14,7 +14,7 @@
 
 output "organization_prefix" {
   description = "The determed organization prefix for all SSM parameters."
-  value       = module.parameters.organization_prefix
+  value       = local.org_prefix
 }
 
 output "name" {
@@ -39,7 +39,7 @@ output "environment_slug" {
   description = <<-EOT
   Environment, with all characters not matching \[A-Za-z0-9-.\_\] converted to -
 EOT
-  value       = module.parameters.environment_slug
+  value       = local.slugified_env
 }
 
 output "purpose" {
@@ -54,7 +54,7 @@ output "purpose_slug" {
   description = <<-EOT
   Purpose, with all characters not matching \[A-Za-z0-9-.\_\] converted to -
 EOT
-  value       = module.parameters.purpose_slug
+  value       = local.slugified_purpose
 }
 
 output "slug" {
@@ -65,33 +65,13 @@ EOT
   value       = var.slug
 }
 
-output "parent_id" {
-  description = <<-EOT
-  Parent Organizational Unit ID or Root ID for the account.
-EOT
-  value       = var.parent_id
-}
-
-output "iam_user_access_to_billing" {
-  description = <<-EOT
-  If true, the new account enables IAM users to access account billing information
-  if they have the correct permissions.
-EOT
-  value       = var.iam_user_access_to_billing
-}
-
-output "email" {
-  description = "The email address for the root user of the account."
-  value       = local.account_email
-}
-
 output "canonical_slug" {
   description = <<-EOT
   Globally unique canonical slug for the account. General information for the account will be
   published under /omat/account_registry/<canonical_slug> and
   /omat/org_registry/<environment_slug>/<purpose_slug>/<canonical_slug>
 EOT
-  value       = module.parameters.canonical_slug
+  value       = local.canonical_slug
 }
 
 output "account_info" {
@@ -112,10 +92,10 @@ output "account_info" {
   /omat/org_registry/<environment_slug>/<purpose_slug>/<canonical_slug> encoded
   as JSON.
 EOT
-  value       = module.parameters.account_info
+  value       = local.account_info
 }
 
 output "prefix" {
   description = "The SSM parameter prefix for all account configuration."
-  value       = module.parameters.prefix
+  value       = local.prefix
 }
