@@ -1,3 +1,9 @@
+## 0.0.3
+
+ENHANCEMENTS:
+
+* Permit AWS provider v5.
+
 ## 0.0.2
 
 BREAKING CHANGES:
