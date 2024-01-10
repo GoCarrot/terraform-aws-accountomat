@@ -1,3 +1,9 @@
+## 0.0.4
+
+ENHANCEMENTS:
+
+* Store account information by account id. This will allow AWS providers to determine what account they are in without needing a canonical account slug passed in.
+
 ## 0.0.3
 
 ENHANCEMENTS:
