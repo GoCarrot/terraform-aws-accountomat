@@ -78,6 +78,14 @@ resource "aws_ssm_parameter" "account-registry" {
   tags = local.account_tags
 }
 
+resource "aws_ssm_parameter" "account-registry-id" {
+  name  = "/omat/account_id_registry/${local.account_id}"
+  type  = "String"
+  value = local.encoded_account_info
+
+  tags = local.account_tags
+}
+
 resource "aws_ssm_parameter" "org-registry" {
   name  = "/omat/org_registry/${local.slugified_purpose}/${local.slugified_env}/${local.canonical_slug}"
   type  = "String"
