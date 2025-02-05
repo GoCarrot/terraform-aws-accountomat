@@ -50,6 +50,7 @@ locals {
     orig_purpose     = var.purpose
     slug             = var.slug
     prefix           = local.prefix
+    canonical_slug   = local.canonical_slug
   }
   encoded_account_info = jsonencode(local.account_info)
 }
