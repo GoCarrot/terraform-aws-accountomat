@@ -1,3 +1,9 @@
+## 0.0.5
+
+ENHANCEMENTS:
+
+* Store the canonical slug with account information. This will allow AWS providers to determine the canonical slug of their current account.
+
 ## 0.0.4
 
 ENHANCEMENTS:
