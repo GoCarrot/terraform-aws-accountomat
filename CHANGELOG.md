@@ -1,3 +1,9 @@
+## 0.0.6
+
+BREAKING CHANGES:
+
+* The aws_organizations_account resource now ignores changes to role name and iam_user_access_to_billing. This allows imports and avoids cases where Terraform may try to recreate the account.
+
 ## 0.0.5
 
 ENHANCEMENTS:
