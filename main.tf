@@ -30,6 +30,8 @@ locals {
   email_parts    = split("@", var.email)
   account_email  = var.generate_email ? "${local.email_parts[0]}+${local.canonical_slug}@${local.email_parts[1]}" : var.email
   account_tags   = { for key, value in var.account_tags : key => value if lookup(data.aws_default_tags.tags.tags, key, null) != value }
+
+  admin_role_name = "OrganizationAccountAccessRole"
 }
 
 data "aws_default_tags" "tags" {}
@@ -39,7 +41,7 @@ resource "aws_organizations_account" "account" {
   email     = local.account_email
   parent_id = var.parent_id
 
-  role_name = "OrganizationAccountAccessRole"
+  role_name = local.admin_role_name
 
   iam_user_access_to_billing = var.iam_user_access_to_billing ? "ALLOW" : "DENY"
 
@@ -57,7 +59,7 @@ module "parameters" {
   source = "./modules/parameters"
 
   account_id      = aws_organizations_account.account.id
-  admin_role_name = aws_organizations_account.account.role_name
+  admin_role_name = coalesce(aws_organizations_account.account.role_name, local.admin_role_name)
   name            = var.name
   environment     = var.environment
   purpose         = var.purpose
