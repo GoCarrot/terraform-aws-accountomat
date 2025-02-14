@@ -44,6 +44,13 @@ resource "aws_organizations_account" "account" {
   iam_user_access_to_billing = var.iam_user_access_to_billing ? "ALLOW" : "DENY"
 
   tags = local.account_tags
+
+  lifecycle {
+    ignore_changes = [
+      role_name,
+      iam_user_access_to_billing,
+    ]
+  }
 }
 
 module "parameters" {
