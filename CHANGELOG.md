@@ -1,3 +1,9 @@
+## 0.0.7
+
+BUG FIXES:
+
+* Correctly handles the default role name when importing an account
+
 ## 0.0.6
 
 BREAKING CHANGES:
