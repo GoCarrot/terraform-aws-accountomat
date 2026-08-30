@@ -1,3 +1,9 @@
+## 0.0.8
+
+ENHANCEMENTS:
+
+* Permit AWS provider v6. Minimum is now v4.
+
 ## 0.0.7
 
 BUG FIXES:
